@@ -57,6 +57,8 @@ section {
   background: #f3f4f6;
 }
 
+
+/* === para centrar en caso de ser necesario ===*/
 .cont-cent{
   display: flex;
   flex-direction: column;
