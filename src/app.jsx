@@ -4,6 +4,7 @@ import Formulario from './modules/Formulario.jsx';
 import Tareas from './modules/Tareas.jsx';
 import TareasGuardadas from './modules/TareasGuardadas.jsx';
 import Usuarios from './modules/Apis.jsx';
+import UsuariosCRUD from './modules/PostAxios.jsx';
 
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
         <Tareas />
         <TareasGuardadas />
         <Usuarios />
+        <UsuariosCRUD />
     </main>
     );
 }
