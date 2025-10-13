@@ -58,9 +58,9 @@ const TareasGuardadas = () => {
                 <input type="text" placeholder="Agrega nueva tarea" value={nuevaTarea} onChange={nuevosDatos}/>
                 <button type="submit">Agregar</button>
             </form>
-            {tareas.length === 0 ? (<p style={{marginTop: "7px"}}>No hay tareas pendientes!</p>): tareas.map(t => {return(<ul><li key={t.id} style={{listStyle: "none", marginTop: "7px"}}>
+            <ul>{tareas.length === 0 ? (<p style={{marginTop: "7px"}}>No hay tareas pendientes!</p>): tareas.map(t => {return(<li key={t.id} style={{listStyle: "none", marginTop: "7px"}}>
                 {t.texto} (Hecha: {t.tareahecha === false ? (<span style={{cursor: "pointer"}} onClick={() => marcaHecha(t.id)}>🔴</span>): (<span style={{cursor: "pointer"}} onClick={() => marcaHecha(t.id)}>🟢</span>)})
-                <span style={{cursor: "pointer"}} onClick={() => eliminarTarea(t.id)}>❌</span></li></ul>)})}
+                <span style={{cursor: "pointer"}} onClick={() => eliminarTarea(t.id)}>❌</span></li>)})}</ul>
         </section>
         )
 }

@@ -43,9 +43,11 @@ const Tareas = () => {
             <form onSubmit={agregarTarea}>
                 <input type="text" placeholder="Agregar tarea..." onChange={nuevaTarea} value={nueva}/>
                 <button type="submit">Agregar</button>
-                {tareas.length === 0 ? (<p style={{marginTop: "7px"}}>No hay tareas</p>): tareas.map(t => (<li style={{listStyle: "none", marginTop: "7px"}} key={t.id}>
+                <ul>
+                    {tareas.length === 0 ? (<p style={{marginTop: "7px"}}>No hay tareas</p>): tareas.map(t => (<li style={{listStyle: "none", marginTop: "7px"}} key={t.id}>
                     {t.texto} (Hecha: {t.tareahecha === false ? (<span style={{cursor: "pointer"}} onClick={() => realizarTarea(t.id)}>🔴</span>): (<span style={{cursor: "pointer"}} onClick={() => realizarTarea(t.id)}>🟢</span>)})
-                    <span onClick={() => eliminarTarea(t.id)} style={{cursor:"pointer"}}>❌</span></li> ))}
+                    <span onClick={() => eliminarTarea(t.id)} style={{cursor:"pointer"}}>❌</span></li>))}
+                </ul>
             </form>
 
 
