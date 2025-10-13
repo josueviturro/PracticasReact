@@ -21,7 +21,7 @@ const Tareas = () => {
         }
 
 
-        const tarea = {id: Date.now(), texto: nueva}
+        const tarea = {id: Date.now(), texto: nueva, tareahecha: false}
         setTareas([...tareas, tarea]);
         setNueva("");
     }
@@ -30,13 +30,22 @@ const Tareas = () => {
         setTareas(tareas.filter(tarea => tarea.id !== id));
     }
 
+    const realizarTarea = (id) => {
+        setTareas(tareas.map(t =>
+            t.id === id ? {...t, tareahecha: !t.tareahecha} : t
+        ))
+    }
+
+
     return(
     <section>
         <h2>Módulo 04 — Listas y renderizado condicional</h2>
             <form onSubmit={agregarTarea}>
                 <input type="text" placeholder="Agregar tarea..." onChange={nuevaTarea} value={nueva}/>
                 <button type="submit">Agregar</button>
-                {tareas.length === 0 ? (<p style={{marginTop: "7px"}}>No hay tareas</p>): tareas.map(t => (<li style={{listStyle: "none", marginTop: "7px"}} key={t.id}>{t.texto} <span onClick={() => eliminarTarea(t.id)} style={{cursor:"pointer"}}>❌</span></li> ))}
+                {tareas.length === 0 ? (<p style={{marginTop: "7px"}}>No hay tareas</p>): tareas.map(t => (<li style={{listStyle: "none", marginTop: "7px"}} key={t.id}>
+                    {t.texto} (Hecha: {t.tareahecha === false ? (<span style={{cursor: "pointer"}} onClick={() => realizarTarea(t.id)}>🔴</span>): (<span style={{cursor: "pointer"}} onClick={() => realizarTarea(t.id)}>🟢</span>)})
+                    <span onClick={() => eliminarTarea(t.id)} style={{cursor:"pointer"}}>❌</span></li> ))}
             </form>
 
 
