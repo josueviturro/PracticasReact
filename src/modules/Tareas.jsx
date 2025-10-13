@@ -49,9 +49,6 @@ const Tareas = () => {
                     <span onClick={() => eliminarTarea(t.id)} style={{cursor:"pointer"}}>❌</span></li>))}
                 </ul>
             </form>
-
-
-
     </section>)
 }
 

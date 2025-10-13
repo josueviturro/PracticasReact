@@ -3,6 +3,7 @@ import Contador from './modules/Contador.jsx'
 import Formulario from './modules/Formulario.jsx';
 import Tareas from './modules/Tareas.jsx';
 import TareasGuardadas from './modules/TareasGuardadas.jsx';
+import Usuarios from './modules/Apis.jsx';
 
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
         <Formulario />
         <Tareas />
         <TareasGuardadas />
+        <Usuarios />
     </main>
     );
 }
