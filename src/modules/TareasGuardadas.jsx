@@ -1,0 +1,54 @@
+import { useState, useEffect } from "react";
+
+
+
+const TareasGuardadas = () => {
+
+    const [ tareas, setTareas ] = useState([]);
+    const [nuevaTarea , setNuevaTarea] = useState("");
+
+    useEffect(() => {
+        const guardadas = localStorage.getItem("tareas");
+        if (guardadas) {
+            setTareas(JSON.parse(guardadas));
+        }},[]);
+
+        useEffect(() => {
+            localStorage.setItem("tareas", JSON.stringify(tareas));
+        },[tareas]);
+
+        const nuevosDatos = (e) => {
+            setNuevaTarea(e.target.value);
+        }
+
+        const agregarTarea = (e) => {
+            e.preventDefault();
+            if (nuevaTarea.trim() === "") return;
+            if (tareas.some(t => t.texto.toLowerCase() === nuevaTarea.toLowerCase().trim())){
+                alert("La tarea ya existe");
+                setNuevaTarea("");
+                return;
+            }
+            const tarea = {id: Date.now(), texto: nuevaTarea}
+            setTareas([...tareas, tarea]);
+            setNuevaTarea("");
+        }
+
+        const eliminarTarea = (id) => {
+            setTareas(tareas.filter(t => t.id !== id))
+        }
+
+        return(
+        <section>
+            <h2>05 — useEffect y persistencia de datos</h2>
+            <p>En este modulo si recargas la pagina y no eliminas los datos los mismos se mantienen</p>
+            <form onSubmit={agregarTarea}>
+                <input type="text" placeholder="Agrega nueva tarea" value={nuevaTarea} onChange={nuevosDatos}/>
+                <button type="submit">Agregar</button>
+                {tareas.length === 0 ? (<p>No hay tareas pendientes!</p>): tareas.map(t => {return(<li key={t.id}>{t.texto} <span style={{cursor: "pointer"}} onClick={() => eliminarTarea(t.id)}>❌</span></li>)})}
+            </form>
+        </section>
+        )
+}
+
+export default TareasGuardadas;
