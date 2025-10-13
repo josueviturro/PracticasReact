@@ -4,14 +4,19 @@ import { useState, useEffect } from "react";
 
 const TareasGuardadas = () => {
 
-    const [ tareas, setTareas ] = useState([]);
+    const [ tareas, setTareas ] = useState(() => {
+        try {
+            const guardadas = localStorage.getItem("tareas");
+            return guardadas ? JSON.parse(guardadas) : [];
+        }catch {
+            console.log("no hay tareas guardadas, se asigna un array vacio");
+            return [];        }
+    });
+
+
     const [nuevaTarea , setNuevaTarea] = useState("");
 
-    useEffect(() => {
-        const guardadas = localStorage.getItem("tareas");
-        if (guardadas) {
-            setTareas(JSON.parse(guardadas));
-        }},[]);
+
 
         useEffect(() => {
             localStorage.setItem("tareas", JSON.stringify(tareas));
