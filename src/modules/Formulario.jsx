@@ -18,7 +18,7 @@ const Formulario = () => {
         <section>
             <div>
                 
-                <h2>03 - Formularios Controlados</h2>
+                <h2>Módulo 03 - Formularios Controlados</h2>
                 <form onSubmit={handleSubmit} style={{display: "flex", gap: "10px"}}>
                     <label>Nombre:</label>
                     <input type="text" value={nombre} onChange={handleChange} placeholder="Escribe tu nombre..." />

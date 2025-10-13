@@ -32,7 +32,7 @@ const Tareas = () => {
 
     return(
     <section>
-        <h2>Modulo 04 — Listas y renderizado condicional</h2>
+        <h2>Módulo 04 — Listas y renderizado condicional</h2>
             <form onSubmit={agregarTarea}>
                 <input type="text" placeholder="Agregar tarea..." onChange={nuevaTarea} value={nueva}/>
                 <button type="submit">Agregar</button>

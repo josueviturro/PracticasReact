@@ -9,7 +9,8 @@ const Contador = () => {
     return(
         <section>
             <div>
-                <h2>Contador: {count}</h2>
+                <h2>Módulo 02 - Contador con useState</h2>
+                <p>Contador: {count}</p>
                 <div style={{display: "flex",gap: "10px"}}>
                     <button onClick={incrementar}> + 1</button>
                     <button onClick={decrementar}> - 1</button>
