@@ -5,7 +5,6 @@ const UsuariosCRUD = () => {
 
     const [usuarios, setUsuarios] = useState([]);
     const [cargando, setCargando] = useState(false);
-    const [error, setError] = useState(null);
     const [nombre, setNombre] = useState("");
     const [email, setEmail] = useState("");
     const [enviado, setEnviado] = useState(false);
@@ -42,7 +41,6 @@ const UsuariosCRUD = () => {
 
         try{
             setEnviado(true);
-            setError(null);
             const { data } = await axios.post("https://jsonplaceholder.typicode.com/users", {
                 name: n,
                 email: m
@@ -67,7 +65,6 @@ const UsuariosCRUD = () => {
                 <button type="submit">{!enviado ? "Crear usuario" : "Creando Usuario"}</button>
             </form>
             {cargando && <p>Cargando...</p>}
-            {error && <p>{error}</p>}
             <ul>
                 {usuarios.map((u) => (
                     <li key={u.id}  style={{ listStyle: "none", border: "1px solid #ddd", borderRadius: 8, padding: "6px 10px", marginBottom: "6px"}}><strong>{u.name} -- <em>{u.email}</em></strong></li>
