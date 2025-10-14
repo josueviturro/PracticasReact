@@ -32,7 +32,8 @@ button {
   background: #2563eb;
   color: white;
   border: none;
-  padding: 0.5rem 0.9rem;
+  width: 80px;
+  height: 30px;
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.2s;

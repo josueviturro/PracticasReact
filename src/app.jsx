@@ -5,6 +5,7 @@ import Tareas from './modules/Tareas.jsx';
 import TareasGuardadas from './modules/TareasGuardadas.jsx';
 import Usuarios from './modules/Apis.jsx';
 import UsuariosCRUD from './modules/PostAxios.jsx';
+import UsuariosDelete from './modules/DeleteAxios.jsx';
 
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
         <TareasGuardadas />
         <Usuarios />
         <UsuariosCRUD />
+        <UsuariosDelete />
     </main>
     );
 }
