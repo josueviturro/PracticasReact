@@ -44,19 +44,19 @@ const UsuariosPatch = () => {
     const guardarEdicion = async () => {
     const nombre = editNombre.trim();
     const email  = editEmail.trim();
-    if (!nombre || !email) return; // validación mínima
+    if (!nombre || !email) return;
 
     try {
         setGuardando(true);
         setError(null);
 
-      // Llamada PATCH (jsonplaceholder no persiste, pero devuelve 200)
+
         await axios.patch(`https://jsonplaceholder.typicode.com/users/${editId}`, {
         name: nombre,
         email
         });
 
-      // Optimistic update: reflejamos cambios en UI
+
     setUsuarios(prev => prev.map(u => (u.id === editId ? { ...u, name: nombre, email } : u))
         );
 
