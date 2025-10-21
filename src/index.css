@@ -15,7 +15,8 @@ html, body {
 
 /* === Layout principal === */
 main {
-  max-width: 900px;
+  border: #dadada 1px solid;
+  max-width: 950px;
   margin: 2rem auto;
   padding: 1.5rem;
   background: white;

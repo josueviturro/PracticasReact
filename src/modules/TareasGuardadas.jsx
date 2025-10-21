@@ -59,7 +59,7 @@ const TareasGuardadas = () => {
                 <button type="submit">Agregar</button>
             </form>
             <ul>{tareas.length === 0 ? (<p style={{marginTop: "7px"}}>No hay tareas pendientes!</p>): tareas.map(t => {return(<li key={t.id} style={{listStyle: "none", marginTop: "7px"}}>
-                {t.texto} (Hecha: {t.tareahecha === false ? (<span style={{cursor: "pointer"}} onClick={() => marcaHecha(t.id)}>🔴</span>): (<span style={{cursor: "pointer"}} onClick={() => marcaHecha(t.id)}>🟢</span>)})
+                {t.texto} (Hecha: {t.tareahecha === false ? (<span style={{cursor: "pointer", userSelect:"none"}} onClick={() => marcaHecha(t.id)}>🔴</span>): (<span style={{cursor: "pointer", userSelect:"none"}} onClick={() => marcaHecha(t.id)}>🟢</span>)})
                 <span style={{cursor: "pointer"}} onClick={() => eliminarTarea(t.id)}>❌</span></li>)})}</ul>
         </section>
         )
