@@ -68,3 +68,15 @@ section {
   align-items: center;
   gap: 1rem;
 }
+
+.navbar{
+  display:flex;
+  margin-bottom: 30px;
+  gap: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+}
+
+.navbar::-webkit-scrollbar { display: none; }

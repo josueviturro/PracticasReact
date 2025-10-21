@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
+import { useCallback } from 'react';
 import Hello from './Hello.jsx'
 import Contador from './Contador.jsx'
 import Formulario from './Formulario.jsx';
@@ -8,14 +9,19 @@ import Usuarios from './Apis.jsx';
 import UsuariosCRUD from './PostAxios.jsx';
 import UsuariosDelete from './DeleteAxios.jsx';
 import UsuariosPatch from './UsuariosPatch.jsx';
+import UsuariosDinam from './usuarios/Usuarios.jsx';
+import UsuarioDetalle from './usuarios/Detalle.jsx';
 
 const Rutes = () => {
+
+    const onWheelNav = useCallback((e) => {
+    e.currentTarget.scrollLeft += e.deltaY;
+    }, []);
 
     return(
         <main>
         <h1>React Playground</h1>
-        <BrowserRouter>
-            <nav style={{marginBottom: "20px", gap: "10px", display: "flex", flexWrap: "wrap"}}>
+            <nav className='navbar' onWheel={onWheelNav} tabIndex={0} role="navigation" aria-label='Módulos'>
                 <NavLink to="/" ><button>Módulo 01</button></NavLink>
                 <Link to="/contador" ><button>Módulo 02</button></Link>
                 <Link to="/formulario" ><button>Módulo 03</button></Link>
@@ -25,6 +31,7 @@ const Rutes = () => {
                 <Link to="/usuarioscrud" ><button>Módulo 07</button></Link>
                 <Link to="/usuariosdelete" ><button>Módulo 08</button></Link>
                 <Link to="/usuariospatch" ><button>Módulo 09</button></Link>
+                <Link to="/usuariosdin" ><button>Módulo 10</button></Link>
             </nav>
             <Routes>
                 <Route path='/' element={<Hello nombre="Josue" />}/>
@@ -36,8 +43,9 @@ const Rutes = () => {
                 <Route path='/usuarioscrud' element={<UsuariosCRUD />}/>
                 <Route path='/usuariosdelete' element={<UsuariosDelete />}/>
                 <Route path='/usuariospatch' element={<UsuariosPatch />}/>
+                <Route path="/usuariosdin" element={<UsuariosDinam />} />
+                <Route path="/usuariosdin/:id" element={<UsuarioDetalle />} />
             </Routes>
-        </BrowserRouter>
     </main>
     )
 }
