@@ -18,7 +18,7 @@ const UsuarioDetalle = () => {
             }
         }
         cargarUsuario();
-    }, []);
+    }, [id]);
 
     return (
         <section>
