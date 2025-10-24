@@ -12,6 +12,7 @@ import UsuariosPatch from './UsuariosPatch.jsx';
 import UsuariosDinam from './usuarios/Usuarios.jsx';
 import UsuarioDetalle from './usuarios/Detalle.jsx';
 import MostrarHola from './MostrarHola.jsx';
+import Gestiones from './Cuenta.jsx';
 
 const Rutes = () => {
 
@@ -35,6 +36,7 @@ const Rutes = () => {
                 <Link to="/usuariospatch" ><button>Módulo 09</button></Link>
                 <Link to="/usuariosdin" ><button>Módulo 10</button></Link>
                 <Link to="/usuarioscon" ><button>Módulo 11</button></Link>
+                <Link to="/gestiones" ><button>Módulo 12</button></Link>
             </nav>
             <Routes>
                 <Route path='/' element={<Hello nombre="Josue" />}/>
@@ -49,6 +51,7 @@ const Rutes = () => {
                 <Route path="/usuariosdin" element={<UsuariosDinam />} />
                 <Route path="/usuariosdin/:id" element={<UsuarioDetalle />} />
                 <Route path="/usuarioscon" element={<MostrarHola />} />
+                <Route path="/gestiones" element={<Gestiones />} />
             </Routes>
     </main>
     )
