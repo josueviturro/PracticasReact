@@ -29,9 +29,10 @@ const UsuarioDetalle = () => {
                     <p><strong>Email:</strong> {usuario.email}</p>
                     <p><strong>Teléfono:</strong> {usuario.phone}</p>
                     <p><strong>Empresa:</strong> {usuario.company?.name}</p>
+                    <p><strong>Ciudad:</strong> {usuario.address?.street}</p>
                 </div>
             ) : (<p>Cargando usuario...</p> )}
-            <button onClick={() => navigate(-1)}>Volver</button>
+            <button onClick={() => navigate("/usuariosdin")}>Volver</button>
         </section>);
 }
     export default UsuarioDetalle;

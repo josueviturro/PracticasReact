@@ -11,6 +11,7 @@ import UsuariosDelete from './DeleteAxios.jsx';
 import UsuariosPatch from './UsuariosPatch.jsx';
 import UsuariosDinam from './usuarios/Usuarios.jsx';
 import UsuarioDetalle from './usuarios/Detalle.jsx';
+import MostrarHola from './MostrarHola.jsx';
 
 const Rutes = () => {
 
@@ -21,6 +22,7 @@ const Rutes = () => {
     return(
         <main>
         <h1>React Playground</h1>
+        <p style={{display:"flex", width:"100%",justifyContent:"center"}}>Usar la rueda del mouse para navegar entre los modulos</p>
             <nav className='navbar' onWheel={onWheelNav} tabIndex={0} role="navigation" aria-label='Módulos'>
                 <NavLink to="/" ><button>Módulo 01</button></NavLink>
                 <Link to="/contador" ><button>Módulo 02</button></Link>
@@ -32,6 +34,7 @@ const Rutes = () => {
                 <Link to="/usuariosdelete" ><button>Módulo 08</button></Link>
                 <Link to="/usuariospatch" ><button>Módulo 09</button></Link>
                 <Link to="/usuariosdin" ><button>Módulo 10</button></Link>
+                <Link to="/usuarioscon" ><button>Módulo 11</button></Link>
             </nav>
             <Routes>
                 <Route path='/' element={<Hello nombre="Josue" />}/>
@@ -45,6 +48,7 @@ const Rutes = () => {
                 <Route path='/usuariospatch' element={<UsuariosPatch />}/>
                 <Route path="/usuariosdin" element={<UsuariosDinam />} />
                 <Route path="/usuariosdin/:id" element={<UsuarioDetalle />} />
+                <Route path="/usuarioscon" element={<MostrarHola />} />
             </Routes>
     </main>
     )
