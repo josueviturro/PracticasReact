@@ -14,6 +14,8 @@ import UsuarioDetalle from './usuarios/Detalle.jsx';
 import MostrarHola from './MostrarHola.jsx';
 import Gestiones from './Cuenta.jsx';
 import UsuariosDB from './UsuariosDB.jsx';
+import UsuarioLogin from '../login/UsuarioLogin.jsx';
+import LoginOk from '../login/LoginOk.jsx';
 
 const Rutes = () => {
 
@@ -39,9 +41,10 @@ const Rutes = () => {
                 <Link to="/usuarioscon" ><button>Módulo 11</button></Link>
                 <Link to="/gestiones" ><button>Módulo 12</button></Link>
                 <Link to="/usuariosdb" ><button>Módulo 13</button></Link>
+                <Link to="/usuarioslogin" ><button>Módulo 14</button></Link>
             </nav>
             <Routes>
-                <Route path='/' element={<Hello nombre="Josue" />}/>
+                <Route path='/' element={<Hello nombre="Usuario" />}/>
                 <Route path='/contador' element={<Contador />}/>
                 <Route path='/formulario' element={<Formulario />}/>
                 <Route path='/tareas' element={<Tareas />}/>
@@ -55,6 +58,8 @@ const Rutes = () => {
                 <Route path="/usuarioscon" element={<MostrarHola />} />
                 <Route path="/gestiones" element={<Gestiones />} />
                 <Route path="/usuariosdb" element={<UsuariosDB />} />
+                <Route path="/usuarioslogin" element={<UsuarioLogin />} />
+                <Route path="/dashboard" element={<LoginOk />} />
             </Routes>
     </main>
     )
