@@ -19,9 +19,10 @@ const LoginOk = () => {
 return (
     <section >
         <p style={{fontSize:"15px", opacity: "0.3"}}>ID: {user.id}</p>
-        <div style={{display: "flex",gap: "20px", flexDirection: "column", alignItems: "center"}}>
+        <div style={{display: "flex",gap: "20px", flexDirection: "column", alignItems: "center", textAlign:"center"}}>
             <h2>Benvenido a tu panel de Usuario</h2>
             <h2>Cuenta: {nombreCuenta}</h2>
+            <p>Las contraseñas de los usuarios se transforman en codigo hash</p>
             <button onClick={retornar}>Salir</button>
         </div>
     </section>

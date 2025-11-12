@@ -2,7 +2,9 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import connectDB from "./database.js";
+import bcrypt from "bcrypt"
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 
@@ -16,7 +18,13 @@ const Usuario = mongoose.model("Usuario", usuarioSchema);
 
 app.post("/usuariosdb", async (req, res) => {
   try {
-    const nuevo = new Usuario(req.body);
+
+    const {nombre , password} = req.body
+
+    const nuevo = new Usuario({
+      nombre: nombre.trim().toLowerCase(),
+      password: await bcrypt.hash(password.trim(), 10)
+    })
     await nuevo.save();
     res.json({ ok: true, usuario: nuevo });
   } catch (err) {
@@ -31,9 +39,15 @@ app.post("/login", async (req, res) => {
     if (!nombre || !password) {
       return res.status(400).json({ ok: false, error: "Faltan datos" });
     }
-    const usuario = await Usuario.findOne({ nombre, password });
+    const usuario = await Usuario.findOne({ nombre: nombre.trim().toLowerCase()});
     if (!usuario) {
       return res.status(401).json({ ok: false, error: "Credenciales inválidas" });
+    }
+
+    const esValido = await bcrypt.compare(password, usuario.password)
+    if (!esValido){
+      return res.status(401).json({ok: false, error: "Contraseña incorrecta"})
+
     }
 
     res.json({status: true, usuario: {id: usuario._id, nombre: usuario.nombre} });
