@@ -3,6 +3,9 @@ import cors from "cors";
 import mongoose from "mongoose";
 import connectDB from "./database.js";
 import bcrypt from "bcrypt"
+import jwt from "jsonwebtoken"
+import authenticate from "./middleware.js";
+import "dotenv/config";  
 const app = express();
 
 app.use(cors());
@@ -39,7 +42,8 @@ app.post("/login", async (req, res) => {
     if (!nombre || !password) {
       return res.status(400).json({ ok: false, error: "Faltan datos" });
     }
-    const usuario = await Usuario.findOne({ nombre: nombre.trim().toLowerCase()});
+    
+    const usuario = await Usuario.findOne({ nombre: nombre.trim().toLowerCase() });
     if (!usuario) {
       return res.status(401).json({ ok: false, error: "Credenciales inválidas" });
     }
@@ -47,14 +51,18 @@ app.post("/login", async (req, res) => {
     const esValido = await bcrypt.compare(password, usuario.password)
     if (!esValido){
       return res.status(401).json({ok: false, error: "Contraseña incorrecta"})
-
     }
 
-    res.json({status: true, usuario: {id: usuario._id, nombre: usuario.nombre} });
+    const payload = {sub: usuario._id.toString(), nombre: usuario.nombre, role: "user"}
+    const accessToken = jwt.sign(payload, process.env.JWT_ACCESS_SECRET, {expiresIn: "1m"})
+
+    res.json({status: true,accessToken, usuario: {id: usuario._id, nombre: usuario.nombre, role: "user"} });
   }
   catch{
     res.status(500).json({ ok: false, error: "Error del servidor" });
   }
 })
+
+
 
 app.listen(3000, () => console.log("Servidor corriendo en puerto 3000"));

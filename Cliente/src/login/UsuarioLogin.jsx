@@ -34,6 +34,7 @@ const UsuarioLogin = () => {
             })
 
             if (data.status) {
+                localStorage.setItem("accessToken", data.accessToken)
                 navigate("/dashboard", { state: { usuario: data.usuario } });
             }
         } catch {
